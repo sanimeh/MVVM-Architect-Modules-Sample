@@ -2,17 +2,23 @@ package com.example.patientsapi.presentation.features.patients.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.patientsapi.domain.model.patients.PatientRemoteModel
 import com.example.patientsapi.presentation.databinding.RowPatientBinding
 
-class PatientsAdapter(private val patients: List<com.example.patientsapi.domain.model.patients.PatientRemoteModel>) :
-    RecyclerView.Adapter<PatientsAdapter.PatientsViewHolder>() {
+class PatientsAdapter() :
+    ListAdapter<PatientRemoteModel, PatientsAdapter.PatientsViewHolder>(DiffCalllBack) {
 
     var indexLastSelected = -1
 
     inner class PatientsViewHolder(private val binding: RowPatientBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(model: com.example.patientsapi.domain.model.patients.PatientRemoteModel, position: Int) {
+        fun bind(
+            model: com.example.patientsapi.domain.model.patients.PatientRemoteModel,
+            position: Int
+        ) {
             binding.model = model
             binding.cardView.setOnClickListener {
                 if (position != indexLastSelected) {
@@ -20,13 +26,13 @@ class PatientsAdapter(private val patients: List<com.example.patientsapi.domain.
                     // if not default
                     // notify last item
                     if (indexLastSelected != -1) {
-                        patients[indexLastSelected].selected = false
+                        getItem(position).selected = false
                         notifyItemChanged(indexLastSelected)
                     }
 
                     // notify new item
                     indexLastSelected = position
-                    patients[position].selected = true
+                    getItem(position).selected = true
                     notifyItemChanged(adapterPosition)
                 }
 
@@ -40,11 +46,27 @@ class PatientsAdapter(private val patients: List<com.example.patientsapi.domain.
         return PatientsViewHolder(binding)
     }
 
-    override fun getItemCount() = patients.size
+    //override fun getItemCount() = patients.size
 
     override fun onBindViewHolder(holder: PatientsViewHolder, position: Int) {
-        val model = patients[position]
+        val model = getItem(position)
         holder.bind(model, position)
     }
 
+    private object DiffCalllBack : DiffUtil.ItemCallback<PatientRemoteModel>() {
+        override fun areItemsTheSame(
+            oldItem: PatientRemoteModel,
+            newItem: PatientRemoteModel
+        ): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(
+            oldItem: PatientRemoteModel,
+            newItem: PatientRemoteModel
+        ): Boolean {
+            return oldItem == newItem
+        }
+
+    }
 }

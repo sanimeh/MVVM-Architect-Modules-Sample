@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PatientsViewModel @Inject constructor(val repository: PatientsRepository) : ViewModel() {
+class  PatientsViewModel @Inject constructor(val repository: PatientsRepository) : ViewModel() {
 
     private val _patientsStateFlow: MutableStateFlow<List<com.example.patientsapi.domain.model.patients.PatientRemoteModel>> =
         MutableStateFlow(emptyList())
@@ -28,7 +28,7 @@ class PatientsViewModel @Inject constructor(val repository: PatientsRepository) 
 
     private fun getPatients() {
         viewModelScope.launch {
-            _patientsLoadingStateFlow.emit(true)
+            _patientsLoadingStateFlow.emit(false)
             try {
                 _patientsStateFlow.emit(repository.getPatients())
             } catch (e: Exception) {

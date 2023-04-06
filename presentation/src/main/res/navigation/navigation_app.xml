@@ -7,5 +7,10 @@
     <fragment
         android:id="@+id/patientsFragment"
         android:name="com.example.patientsapi.presentation.features.patients.PatientsFragment"
-        android:label="PatientsFragment" />
+        android:label="Patients Fragment" />
+
+    <fragment
+        android:id="@+id/addPatientsFragment"
+        android:name="com.example.patientsapi.presentation.features.add.AddPatientFragment"
+        android:label="Add Patients Fragment" />
 </navigation>
