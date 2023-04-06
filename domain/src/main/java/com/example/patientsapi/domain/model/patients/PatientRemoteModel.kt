@@ -7,7 +7,7 @@ data class PatientRemoteModel(
     val condition: String,
 
     @SerializedName("_id")
-    val _id: String,
+    val id: String,
 
     @SerializedName("name")
     val namePatient: String,
