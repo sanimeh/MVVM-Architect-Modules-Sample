@@ -2,24 +2,28 @@ package com.example.patientsapi.presentation.features.patients.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.patientsapi.domain.model.patients.PatientRemoteModel
 import com.example.patientsapi.presentation.databinding.RowPatientBinding
 
-class PatientsAdapter() :
+class PatientsAdapter(
+    private val onDeletePatient: (id: String) -> Unit,
+    private val onClickItem: (id: String) -> Unit
+) :
     ListAdapter<PatientRemoteModel, PatientsAdapter.PatientsViewHolder>(DiffCalllBack) {
 
     var indexLastSelected = -1
 
     inner class PatientsViewHolder(private val binding: RowPatientBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(
-            model: com.example.patientsapi.domain.model.patients.PatientRemoteModel,
-            position: Int
-        ) {
+        fun bind(model: PatientRemoteModel, position: Int) {
             binding.model = model
+
+
+
             binding.cardView.setOnClickListener {
                 if (position != indexLastSelected) {
 
@@ -35,9 +39,11 @@ class PatientsAdapter() :
                     getItem(position).selected = true
                     notifyItemChanged(adapterPosition)
                 }
-
+                onClickItem(model.id)
             }
-
+            binding.imageDelete.setOnClickListener {
+                onDeletePatient(model.id)
+            }
         }
     }
 
@@ -55,15 +61,13 @@ class PatientsAdapter() :
 
     private object DiffCalllBack : DiffUtil.ItemCallback<PatientRemoteModel>() {
         override fun areItemsTheSame(
-            oldItem: PatientRemoteModel,
-            newItem: PatientRemoteModel
+            oldItem: PatientRemoteModel, newItem: PatientRemoteModel
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: PatientRemoteModel,
-            newItem: PatientRemoteModel
+            oldItem: PatientRemoteModel, newItem: PatientRemoteModel
         ): Boolean {
             return oldItem == newItem
         }

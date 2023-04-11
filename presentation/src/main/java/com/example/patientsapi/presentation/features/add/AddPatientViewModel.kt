@@ -2,7 +2,7 @@ package com.example.patientsapi.presentation.features.add
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.patientsapi.domain.model.AddPatientsRemoteModel
+import com.example.patientsapi.domain.model.AddPatientRemoteModel
 import com.example.patientsapi.domain.model.add.BodyAddPatientModel
 import com.example.patientsapi.domain.usecase.add.AddPatientUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +15,7 @@ import javax.inject.Inject
 class AddPatientViewModel @Inject constructor(private val addPatientUseCase: AddPatientUseCase) :
     ViewModel() {
 
-    private val _addPatientsStateFlow: MutableStateFlow<AddPatientsRemoteModel?> = MutableStateFlow(null)
+    private val _addPatientsStateFlow: MutableStateFlow<AddPatientRemoteModel?> = MutableStateFlow(null)
     val addPatientsStateFlow = _addPatientsStateFlow.asStateFlow()
 
     private val _addPatientsLoadingStateFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)

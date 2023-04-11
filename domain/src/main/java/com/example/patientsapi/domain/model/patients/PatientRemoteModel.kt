@@ -30,8 +30,9 @@ data class PatientRemoteModel(
     @SerializedName("photo")
     val photo: String,
 
-    val test:List<TestModel>,
+    //val test:List<TestModel>,
 
+    //local var
     var selected: Boolean = false
 
     )
