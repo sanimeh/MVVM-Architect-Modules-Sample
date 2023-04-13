@@ -9,16 +9,18 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.patientsapi.core.BaseFragment
 import com.example.patientsapi.domain.model.add.BodyAddPatientModel
+import com.example.patientsapi.presentation.R
 import com.example.patientsapi.presentation.databinding.FragmentAddPatientBinding
+import com.example.patientsapi.presentation.databinding.FragmentDetailsBinding
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AddPatientFragment : Fragment() {
-    private lateinit var binding: FragmentAddPatientBinding
+class AddPatientFragment : BaseFragment<FragmentAddPatientBinding>(R.layout.fragment_add_patient) {
     private val viewModel: AddPatientViewModel by viewModels()
 
     override fun onCreateView(

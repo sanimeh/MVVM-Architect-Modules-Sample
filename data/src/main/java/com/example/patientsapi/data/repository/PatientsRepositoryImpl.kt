@@ -27,7 +27,7 @@ class PatientsRepositoryImpl @Inject constructor(private val patientsDataSource:
     }
 
     override suspend fun getPatientById(id: String): PatientRemoteModel {
-        return patientsDataSource.getPatientById(id).date
+        return patientsDataSource.getPatientById(id).data
     }
 
 }

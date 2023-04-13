@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.example.patientsapi.domain.model.patients.PatientRemoteModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/swip_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view_background"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/color_secondry"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextAppearance.Material3.HeadlineSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:lines="2"
+            android:text="@{model.namePatient}"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/card_view_image"
+            app:layout_constraintStart_toStartOf="@id/card_view_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/full_names"
+
+            />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="60dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_background"
+            app:strokeColor="@color/white"
+            app:strokeWidth="4dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                imageUrl="@{model.photo}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@tools:sample/avatars" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <RatingBar
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:foregroundTint="@color/white"
+            android:rating="4"
+            android:theme="@style/RatingBar"
+            app:layout_constraintBottom_toBottomOf="@id/view_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_view_image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:rating="4"
+            android:theme="@style/Widget.AppCompat.RatingBar"
+            app:layout_constraintBottom_toBottomOf="@id/view_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_view_image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_about_info"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:text="@{model.patientInfo}"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/card_view_image"
+            app:layout_constraintTop_toBottomOf="@id/card_view_image"
+            tools:text="@tools:sample/full_names" />
+
+        <ProgressBar
+            android:id="@+id/progressCircular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -7,16 +7,17 @@ import androidx.lifecycle.viewModelScope
 import com.example.patientsapi.domain.model.AddPatientRemoteModel
 import com.example.patientsapi.domain.model.patients.PatientRemoteModel
 import com.example.patientsapi.domain.usecase.details.GetPatientByIdUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class DetailsViewModel @Inject constructor(
     private val getPatientByIdUseCase: GetPatientByIdUseCase,
     state: SavedStateHandle
-) :
-    ViewModel() {
+) : ViewModel() {
 
     private val _detailsStateFlow: MutableStateFlow<PatientRemoteModel?> = MutableStateFlow(null)
     val detailssStateFlow = _detailsStateFlow.asStateFlow()
