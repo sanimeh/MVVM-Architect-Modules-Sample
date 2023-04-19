@@ -1,10 +1,8 @@
 package com.example.patientsapi.presentation.features.details
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.patientsapi.domain.model.AddPatientRemoteModel
 import com.example.patientsapi.domain.model.patients.PatientRemoteModel
 import com.example.patientsapi.domain.usecase.details.GetPatientByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

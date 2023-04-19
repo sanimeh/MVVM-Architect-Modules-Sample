@@ -1,4 +1,4 @@
-package com.example.patientsapi.domain.model
+package com.example.patientsapi.domain.model.add
 
 data class AddPatientRemoteModel(
     val condition: String,

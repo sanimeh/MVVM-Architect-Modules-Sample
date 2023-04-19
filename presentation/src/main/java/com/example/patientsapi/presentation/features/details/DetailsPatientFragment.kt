@@ -3,6 +3,7 @@ package com.example.patientsapi.presentation.features.details
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -21,6 +22,11 @@ class DetailsPatientFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fra
         super.onViewCreated(view, savedInstanceState)
         arguments?.getString("id")
         initObserver()
+        initView()
+    }
+
+    private fun initView() {
+        //binding.model =
     }
 
     private fun initObserver() {
@@ -45,4 +51,13 @@ class DetailsPatientFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fra
             }
         }
     }
+
+    fun String.addPoint(): String {
+        return "$this."
+    }
+
+    fun AppCompatTextView.addPoint() {
+        this.text = text.toString().addPoint()
+    }
+
 }

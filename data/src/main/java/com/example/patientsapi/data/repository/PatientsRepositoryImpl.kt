@@ -1,10 +1,9 @@
 package com.example.patientsapi.data.repository
 
 import com.example.patientsapi.data.datasource.PatientsDataSource
-import com.example.patientsapi.domain.model.AddPatientRemoteModel
+import com.example.patientsapi.domain.model.add.AddPatientRemoteModel
 import com.example.patientsapi.domain.model.add.BodyAddPatientModel
 import com.example.patientsapi.domain.model.delete.PatientDeleteResponseModel
-import com.example.patientsapi.domain.model.details.DetailsPatientWrappedRemoteModel
 import com.example.patientsapi.domain.model.patients.PatientRemoteModel
 import com.example.patientsapi.domain.repo.PatientsRepository
 import javax.inject.Inject

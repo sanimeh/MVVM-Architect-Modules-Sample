@@ -1,6 +1,6 @@
 package com.example.patientsapi.domain.usecase.add
 
-import com.example.patientsapi.domain.model.AddPatientRemoteModel
+import com.example.patientsapi.domain.model.add.AddPatientRemoteModel
 import com.example.patientsapi.domain.model.add.BodyAddPatientModel
 import com.example.patientsapi.domain.repo.PatientsRepository
 import javax.inject.Inject

@@ -2,7 +2,7 @@ package com.example.patientsapi.presentation.features.add
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.patientsapi.domain.model.AddPatientRemoteModel
+import com.example.patientsapi.domain.model.add.AddPatientRemoteModel
 import com.example.patientsapi.domain.model.add.BodyAddPatientModel
 import com.example.patientsapi.domain.usecase.add.AddPatientUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

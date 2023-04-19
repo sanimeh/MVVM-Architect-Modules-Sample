@@ -1,10 +1,10 @@
 package com.example.patientsapi.data.datasource
 
-import com.example.patientsapi.domain.model.AddPatientRemoteModel
+import com.example.patientsapi.domain.model.add.AddPatientRemoteModel
+import com.example.patientsapi.domain.model.BaseWrapper
 import com.example.patientsapi.domain.model.add.BodyAddPatientModel
 import com.example.patientsapi.domain.model.delete.PatientDeleteResponseModel
-import com.example.patientsapi.domain.model.details.DetailsPatientWrappedRemoteModel
-import com.example.patientsapi.domain.model.patients.PatientsWrapperRemoteModel
+import com.example.patientsapi.domain.model.patients.PatientRemoteModel
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -14,7 +14,7 @@ import retrofit2.http.Path
 interface PatientsDataSource {
 
     @GET("patients")
-    suspend fun getPatients(): PatientsWrapperRemoteModel
+    suspend fun getPatients(): BaseWrapper<List<PatientRemoteModel>>
 
     @POST("patients")
     suspend fun AddPatients(@Body bodyAddPatientModel: BodyAddPatientModel): AddPatientRemoteModel
@@ -23,7 +23,7 @@ interface PatientsDataSource {
     suspend fun deletePatient(@Path("id") id: String): PatientDeleteResponseModel
 
     @GET("patients/{id}")
-    suspend fun getPatientById(@Path("id") id: String): DetailsPatientWrappedRemoteModel
+    suspend fun getPatientById(@Path("id") id: String): BaseWrapper<PatientRemoteModel>
 
 
 }
