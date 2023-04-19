@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.patientsapi.domain.model.delete.PatientDeleteResponseModel
-import com.example.patientsapi.domain.model.patients.PatientRemoteModel
+import com.example.patientsapi.domain.model.delete.PatientDeleteResponse
+import com.example.patientsapi.domain.model.patients.PatientResponse
 import com.example.patientsapi.presentation.R
 import com.example.patientsapi.presentation.databinding.FragmentPatientsBinding
 import com.example.patientsapi.presentation.features.patients.adapters.PatientsAdapter
@@ -79,7 +79,7 @@ class PatientsFragment : Fragment() {
         }
     }
 
-    private fun onPatientDeletedSuccess(response: PatientDeleteResponseModel?) {
+    private fun onPatientDeletedSuccess(response: PatientDeleteResponse?) {
         if (response != null) {
             Toast.makeText(requireContext(), response.message, Toast.LENGTH_SHORT).show()
             viewModel.getPatients()
@@ -87,7 +87,7 @@ class PatientsFragment : Fragment() {
 
     }
 
-    private fun onSuccessPatients(response: List<PatientRemoteModel>?) {
+    private fun onSuccessPatients(response: List<PatientResponse>?) {
         if (response != null)
             adapter.submitList(response)
     }

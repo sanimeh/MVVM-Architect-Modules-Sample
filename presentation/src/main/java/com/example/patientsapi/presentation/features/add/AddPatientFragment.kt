@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.patientsapi.core.BaseFragment
-import com.example.patientsapi.domain.model.add.BodyAddPatientModel
+import com.example.patientsapi.domain.model.add.AddPatientRequest
 import com.example.patientsapi.presentation.R
 import com.example.patientsapi.presentation.databinding.FragmentAddPatientBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -74,8 +74,8 @@ class AddPatientFragment : BaseFragment<FragmentAddPatientBinding>(R.layout.frag
         }
     }
 
-    private fun getInfoPatient(): BodyAddPatientModel {
-        return BodyAddPatientModel(
+    private fun getInfoPatient(): AddPatientRequest {
+        return AddPatientRequest(
             binding.editTextFullName.text.toString(),
             binding.editTextAddress.text.toString(),
             binding.editTextGender.text.toString(),

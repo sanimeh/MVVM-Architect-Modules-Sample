@@ -2,7 +2,7 @@ package com.example.patientsapi.domain.model.patients
 
 import com.google.gson.annotations.SerializedName
 
-data class PatientRemoteModel(
+data class PatientResponse(
     @SerializedName("condition")
     val condition: String,
 
