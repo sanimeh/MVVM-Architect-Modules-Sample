@@ -11,7 +11,6 @@ import javax.inject.Inject
 class PatientsRepositoryImpl @Inject constructor(private val patientsDataSource: PatientsDataSource) :
     PatientsRepository {
 
-
     override suspend fun getPatients(): List<PatientResponse> {
         val listSorted = patientsDataSource.getPatients().data.sortedBy { it.namePatient }
         return listSorted

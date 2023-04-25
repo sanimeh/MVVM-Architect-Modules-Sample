@@ -37,6 +37,7 @@ class DetailsPatientFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fra
                 //Toast.makeText(requireContext(), "response : $response", Toast.LENGTH_SHORT).show()
             }
         }
+
         lifecycleScope.launch {
             viewModel.detailsLoadingStateFlow.collect { show ->
                 binding.progressCircular.isVisible = show
@@ -59,5 +60,4 @@ class DetailsPatientFragment : BaseFragment<FragmentDetailsBinding>(R.layout.fra
     fun AppCompatTextView.addPoint() {
         this.text = text.toString().addPoint()
     }
-
 }
