@@ -23,6 +23,7 @@ object NetworkModule {
             .build()
     }
 
+
     @Provides
     @Singleton
     fun providePatientDataSource(retrofit: Retrofit): PatientsDataSource {

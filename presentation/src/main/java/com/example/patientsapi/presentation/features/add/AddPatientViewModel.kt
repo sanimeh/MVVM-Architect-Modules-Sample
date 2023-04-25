@@ -2,8 +2,8 @@ package com.example.patientsapi.presentation.features.add
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.patientsapi.domain.model.AddPatientsRemoteModel
-import com.example.patientsapi.domain.model.add.BodyAddPatientModel
+import com.example.patientsapi.domain.model.add.AddPatientRemoteModel
+import com.example.patientsapi.domain.model.add.AddPatientRequest
 import com.example.patientsapi.domain.usecase.add.AddPatientUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +15,7 @@ import javax.inject.Inject
 class AddPatientViewModel @Inject constructor(private val addPatientUseCase: AddPatientUseCase) :
     ViewModel() {
 
-    private val _addPatientsStateFlow: MutableStateFlow<AddPatientsRemoteModel?> = MutableStateFlow(null)
+    private val _addPatientsStateFlow: MutableStateFlow<AddPatientRemoteModel?> = MutableStateFlow(null)
     val addPatientsStateFlow = _addPatientsStateFlow.asStateFlow()
 
     private val _addPatientsLoadingStateFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
@@ -24,11 +24,11 @@ class AddPatientViewModel @Inject constructor(private val addPatientUseCase: Add
     private val _addPatientsErorsStateFlow: MutableStateFlow<Exception?> = MutableStateFlow(null)
     val addPatientsErorsStateFlow = _addPatientsErorsStateFlow.asStateFlow()
 
-    fun addPatient(bodyAddPatientModel: BodyAddPatientModel){
+    fun addPatient(addPatientRequest: AddPatientRequest){
         viewModelScope.launch {
             _addPatientsLoadingStateFlow.emit(true)
             try {
-                _addPatientsStateFlow.emit(addPatientUseCase(bodyAddPatientModel))
+                _addPatientsStateFlow.emit(addPatientUseCase(addPatientRequest))
             } catch (e: Exception) {
                 _addPatientsErorsStateFlow.emit(e)
             }

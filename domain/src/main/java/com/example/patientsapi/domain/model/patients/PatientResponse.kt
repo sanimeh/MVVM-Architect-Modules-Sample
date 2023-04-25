@@ -2,7 +2,7 @@ package com.example.patientsapi.domain.model.patients
 
 import com.google.gson.annotations.SerializedName
 
-data class PatientRemoteModel(
+data class PatientResponse(
     @SerializedName("condition")
     val condition: String,
 
@@ -30,8 +30,13 @@ data class PatientRemoteModel(
     @SerializedName("photo")
     val photo: String,
 
-    val test:List<TestModel>,
+    //val test:List<TestModel>,
 
+    //local var
     var selected: Boolean = false
 
-    )
+) {
+    fun     getPatientInfo(): String {
+        return "Lives in $address, Email: $email Born on $birthday"
+    }
+}

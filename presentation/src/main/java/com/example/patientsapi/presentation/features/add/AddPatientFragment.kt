@@ -1,34 +1,22 @@
 package com.example.patientsapi.presentation.features.add
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.patientsapi.domain.model.add.BodyAddPatientModel
+import com.example.patientsapi.core.BaseFragment
+import com.example.patientsapi.domain.model.add.AddPatientRequest
+import com.example.patientsapi.presentation.R
 import com.example.patientsapi.presentation.databinding.FragmentAddPatientBinding
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AddPatientFragment : Fragment() {
-    private lateinit var binding: FragmentAddPatientBinding
+class AddPatientFragment : BaseFragment<FragmentAddPatientBinding>(R.layout.fragment_add_patient) {
     private val viewModel: AddPatientViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentAddPatientBinding.inflate(layoutInflater)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -86,8 +74,8 @@ class AddPatientFragment : Fragment() {
         }
     }
 
-    private fun getInfoPatient(): BodyAddPatientModel {
-        return BodyAddPatientModel(
+    private fun getInfoPatient(): AddPatientRequest {
+        return AddPatientRequest(
             binding.editTextFullName.text.toString(),
             binding.editTextAddress.text.toString(),
             binding.editTextGender.text.toString(),
@@ -95,7 +83,6 @@ class AddPatientFragment : Fragment() {
             binding.editTextMobile.text.toString(),
             binding.editTextEmail.text.toString(),
         )
-
     }
 
     private fun initObserver() {

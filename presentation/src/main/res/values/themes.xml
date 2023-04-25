@@ -18,9 +18,16 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
+
     <style name="ShapeAppearanceOverlay.50Percentage" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/color_secondry</item>
+        <item name="colorControlNormal">@color/white</item>
 
     </style>
 </resources>
