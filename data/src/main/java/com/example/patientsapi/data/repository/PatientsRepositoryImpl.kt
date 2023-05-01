@@ -12,8 +12,7 @@ class PatientsRepositoryImpl @Inject constructor(private val patientsDataSource:
     PatientsRepository {
 
     override suspend fun getPatients(): List<PatientResponse> {
-        val listSorted = patientsDataSource.getPatients().data.sortedBy { it.namePatient }
-        return listSorted
+        return patientsDataSource.getPatients().data
     }
 
     override suspend fun addPatients(addPatientRequest: AddPatientRequest): AddPatientRemoteModel {

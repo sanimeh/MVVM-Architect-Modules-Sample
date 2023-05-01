@@ -13,8 +13,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RepoModule {
-    const val baseUrl = "https://patients-app-api.herokuapp.com"
-
     @Provides
     fun provideRepositoryPatients(patientsDataSource: PatientsDataSource): PatientsRepository {
         return PatientsRepositoryImpl(patientsDataSource)

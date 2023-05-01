@@ -20,9 +20,9 @@ open class BaseFragment<T : ViewDataBinding>(@LayoutRes private val layoutId: In
         savedInstanceState: Bundle?
     ): View? {
         container?.let {
-            if (inflater != null) {
-                performDataBinding(inflater, container)
-            }
+
+            performDataBinding(inflater, container)
+
         }
         return binding.root
     }
