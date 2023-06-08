@@ -8,4 +8,4 @@
 |||||
 |:-------------------|:------------------------|:------------------------|:------------------------|
 |Kotlin KTX|MVVM|Modules|REST-API
-|FlowData|Coin|Retrofit2|dagger2|
+|FlowData|Coin|Retrofit2|DaggerHilt|
