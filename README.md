@@ -8,5 +8,5 @@
 # 📦 Latest
 |||||
 |:-------------------|:------------------------|:------------------------|:------------------------|
-|Kotlin KTX | MVVM | Modules | Adapter Binding | FlowData | 
-|Retrofit2|Gson|ViewBinding| DataBinding| dagger2 | REST-API
+|Kotlin KTX|MVVM|Modules|AdapterBinding 
+|FlowData|Coin|Retrofit2|Gson|ViewBinding|DataBinding|dagger2|REST-API
